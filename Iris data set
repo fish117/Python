@@ -1,0 +1,20 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Nov  1 21:00:26 2017
+
+@author: lenovo
+"""
+
+
+from sklearn.datasets import load_iris # iris数据集
+from sklearn.model_selection import train_test_split # 分割数据模块，分成train和test
+from sklearn.neighbors import KNeighborsClassifier # K最近邻(kNN，k-NearestNeighbor)分类算法
+
+#加载iris数据集
+iris = load_iris()
+X = iris.data
+y = iris.target
+X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=4)#把
+knn = KNeighborsClassifier(n_neighbors=5)#即考虑附近的5个值
+knn.fit(X_train, y_train)
+print(knn.score(X_test, y_test))#测试看看test data的得分是多少，因为testdata与traindata是不会互相影响的，是
